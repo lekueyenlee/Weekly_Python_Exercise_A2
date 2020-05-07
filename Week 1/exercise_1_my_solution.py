@@ -2,9 +2,22 @@
 # Date: 05/05/2020
 
 
-def acrobat(input_string_value):
-    string_val = input_string_value
+def acrobot(input_string_value, min_word_length=1):
+    list_values = []
+    acronym = []
+    
+    if input_string_value:
+        list_values = input_string_value.split(" ")
+        
+        for value in list_values:
+            if (len(value) >= min_word_length):
+                letter = value[0].capitalize()
+                acronym.append(letter)
+            else:
+                pass
+    else:
+        pass
 
-    return string_val
+    return ''.join(acronym)
 
-print(acrobat("Here is my String"))
+#print(acrobot("Here is my String", min_word_length=3))
