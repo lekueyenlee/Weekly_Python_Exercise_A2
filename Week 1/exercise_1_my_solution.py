@@ -1,5 +1,4 @@
-# Exercise 1 
-# Description: Create an acroym from the string
+# Example 1
 # Date: 05/05/2020
 
 
