@@ -1,5 +1,5 @@
 import pytest
-from exercise_1_my_solution import acrobot
+from exercise_1_my_solution_comprehension_list import acrobot
 
 
 def test_empty_sentence():
