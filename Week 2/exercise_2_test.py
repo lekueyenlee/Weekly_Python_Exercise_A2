@@ -1,28 +1,52 @@
 import pytest
-from exercise_1_my_solution_comprehension_list import acrobot
+from exercise_2_my_solution import left_right_chars
+from io import StringIO
 
 
-def test_empty_sentence():
-    assert acrobot('') == ''
+@pytest.fixture
+def empty_file():
+    return StringIO('')
 
 
-def test_one_word_sentence():
-    assert acrobot('hello') == 'H'
+@pytest.fixture
+def alphabet_file():
+    return StringIO('''abcdefghijklmnopqrstuvwxyz''')
 
 
-@pytest.mark.parametrize('sentence, acronym', [
-    ('central intelligence agency', 'CIA'),
-    ('three letter acronym', 'TLA'),
-    ('in my humble opinion', 'IMHO'),
-    ('rolling on the floor laughing', 'ROTFL')])
-def test_sentences(sentence, acronym):
-    assert acrobot(sentence) == acronym
+@pytest.fixture
+def numbers_file():
+    return StringIO('''1234567890''')
 
 
-@pytest.mark.parametrize('sentence, min_word_length, acronym', [
-    ('certificate of deposit', 3, 'CD'),
-    ('in my humble opinion', 3, 'HO'),
-    ('in my humble opinion', 10, ''),
-    ('rolling on the floor laughing', 3, 'RTFL')])
-def test_sentences_with_min_word_length(sentence, min_word_length, acronym):
-    assert acrobot(sentence, min_word_length) == acronym
+def test_no_file():
+    assert left_right_chars() == []
+
+
+def test_empty_file(empty_file):
+    assert left_right_chars(empty_file) == []
+
+
+def test_alphabet_file(alphabet_file):
+    assert left_right_chars(alphabet_file) == [['a', 'g'],
+                                               ['h', 'p'],
+                                               ['q', 'z']]
+
+
+def test_alphabet_file_n_3(alphabet_file):
+    assert left_right_chars(alphabet_file, numchars=3) == [['abc', 'efg'],
+                                                           ['hij', 'nop'],
+                                                           ['qrs', 'xyz']]
+
+
+def test_numbers_file_n_3(numbers_file):
+    assert left_right_chars(numbers_file, numchars=3) == [['123', '345'],
+                                                          ['678', '890']]
+
+
+def test_both_file_n_3(alphabet_file, numbers_file):
+    assert left_right_chars(alphabet_file,
+                            numbers_file, numchars=3) == [['abc', 'efg'],
+                                                          ['hij', 'nop'],
+                                                          ['qrs', 'xyz'],
+                                                          ['123', '345'],
+                                                          ['678', '890']]

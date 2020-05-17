@@ -1,6 +1,9 @@
-# Example 1
-# Date: 05/05/2020
+# Example 2
+# Date: 05/15/2020
 
+
+def left_right_chars():
+    pass
 
 def acrobot(input_string_value, min_word_length=1):
     list_values = []
