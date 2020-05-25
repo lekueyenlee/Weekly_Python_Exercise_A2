@@ -10,12 +10,17 @@ def empty_file():
 
 @pytest.fixture
 def alphabet_file():
-    return StringIO('''abcdefghijklmnopqrstuvwxyz''')
+    return StringIO('''abcdefg
+hijklmnop
+qrstuvwxyz
+''')
 
 
 @pytest.fixture
 def numbers_file():
-    return StringIO('''1234567890''')
+    return StringIO('''12345
+67890
+''')
 
 
 def test_no_file():
@@ -27,42 +32,26 @@ def test_empty_file(empty_file):
 
 
 def test_alphabet_file(alphabet_file):
-    assert left_right_chars(alphabet_file) == [['a', 'z']]
-
-#def test_alphabet_file(alphabet_file):
-#    assert left_right_chars(alphabet_file) == [['a', 'g'],
-#                                               ['h', 'p'],
-#                                               ['q', 'z']]
-
+    assert left_right_chars(alphabet_file) == [['a', 'g'],
+                                               ['h', 'p'],
+                                               ['q', 'z']]
 
 
 def test_alphabet_file_n_3(alphabet_file):
-    assert left_right_chars(alphabet_file, numchars=3) == [['abc', 'xyz']]
-
-#def test_alphabet_file_n_3(alphabet_file):
-#    assert left_right_chars(alphabet_file, numchars=3) == [['abc', 'efg'],
-#                                                           ['hij', 'nop'],
-#                                                           ['qrs', 'xyz']]
+    assert left_right_chars(alphabet_file, numchars=3) == [['abc', 'efg'],
+                                                           ['hij', 'nop'],
+                                                           ['qrs', 'xyz']]
 
 
 def test_numbers_file_n_3(numbers_file):
-    assert left_right_chars(numbers_file, numchars=3) == [['123', '890']]
-
-#def test_numbers_file_n_3(numbers_file):
-#    assert left_right_chars(numbers_file, numchars=3) == [['123', '345'],
-#                                                          ['678', '890']]
-
+    assert left_right_chars(numbers_file, numchars=3) == [['123', '345'],
+                                                          ['678', '890']]
 
 
 def test_both_file_n_3(alphabet_file, numbers_file):
     assert left_right_chars(alphabet_file,
-                            numbers_file, numchars=3) == [['abc', 'xyz'],
-                                                          ['123', '890']]
-
-#def test_both_file_n_3(alphabet_file, numbers_file):
-#    assert left_right_chars(alphabet_file,
-#                            numbers_file, numchars=3) == [['abc', 'efg'],
-#                                                          ['hij', 'nop'],
-#                                                          ['qrs', 'xyz'],
-#                                                          ['123', '345'],
-#                                                          ['678', '890']]
+                            numbers_file, numchars=3) == [['abc', 'efg'],
+                                                          ['hij', 'nop'],
+                                                          ['qrs', 'xyz'],
+                                                          ['123', '345'],
+                                                          ['678', '890']]
