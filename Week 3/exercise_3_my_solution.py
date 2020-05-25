@@ -5,16 +5,15 @@
 def family_ages(item, **kwargs):
     ages = {}
     sort_ages = []
-    #if file != '':
-        #for item in args:
-            #file_name = str(item)
+
     for key, value in kwargs.items():        
         ages.update({key: value})
         sort_ages = sorted(ages.items(), key=lambda x: x[1], reverse=False)
             
     for age in sort_ages:
         output_format = (f"{age[0]},{age[1]}\n")
-        item.write(output_format) 
+        item.write(output_format)
+    
 
         #file = open(file_name, "w")
 
