@@ -1,5 +1,5 @@
 import pytest
-from exercise_3_my_solution import left_right_chars
+from exercise_3_my_solution import family_ages
 from io import StringIO
 
 

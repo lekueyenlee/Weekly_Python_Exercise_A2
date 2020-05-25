@@ -2,23 +2,31 @@
 # Date: 05/25/2020
 
 
-def family_ages(*kwargs):
-    pass
+def family_ages(item, **kwargs):
+    ages = {}
+    sort_ages = []
+    #if file != '':
+        #for item in args:
+            #file_name = str(item)
+    for key, value in kwargs.items():        
+        ages.update({key: value})
+        sort_ages = sorted(ages.items(), key=lambda x: x[1], reverse=False)
+            
+    for age in sort_ages:
+        output_format = (f"{age[0]},{age[1]}\n")
+        item.write(output_format) 
 
-def left_right_chars(*args, numchars=1):
-    results = []
+        #file = open(file_name, "w")
 
-    for item in args:
-        for entry in item:
-            results.append([entry[:numchars],entry.rstrip()[-numchars:]])
-            #left_character = entry[:numchars]
-            #right_character = entry.rstrip()[-numchars:]
-            #results.append([left_character,right_character])
-    
-    return results
+        #for age in sort_ages: 
+            #print(age)
+            #print(f"Name: {age[0].capitalize()}, Age: {age[1]}")
+            #output_format = (f"Name: {age[0].capitalize()}, Age: {age[1]}" + "\n")
+            #output_format = (f"{age[0].capitalize()},{age[1]}" + "\n")
+            #output_format = (f"{age[0]},{age[1]}"+"\n")
+            #file.write(output_format) 
+        
+        #file.close() 
 
-#print(acrobot("Here is my String", min_word_length=3))
-#print(left_right_chars(['a','g'], ['h', 'p'], "this is a test this is only a test"))
-#, ["a", "g"]
-#print(left_right_chars("this is a test this is only a test", ["a", "g"]))
-#print(left_right_chars('''abcdefghijklmnopqrstuvwxyz'''))
+
+#family_ages('ages.txt', reuven=48, atara=18, lee=9, shikma=16, amotz=13)

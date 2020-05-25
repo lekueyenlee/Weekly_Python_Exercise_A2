@@ -1,0 +1,5 @@
+reuven,48
+atara,18
+shikma,16
+amotz,13
+lee,9
